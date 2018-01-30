@@ -30,12 +30,13 @@ def getHistoryIps(pageUrl):
 
 links = getLinks("/wiki/Python_(programming_language)")
 
-while len(links) > 0:
-    for link in links:
-        print(link)
-        historyIps = getHistoryIps(link.attrs['href'])
-        for historyIp in historyIps:
-            print(historyIp)
+if __name__ == "__main__":
+    while len(links) > 0:
+        for link in links:
+            print(link)
+            historyIps = getHistoryIps(link.attrs['href'])
+            for historyIp in historyIps:
+                print(historyIp)
 
-    newLink = links[random.randint(0, len(links) - 1)].attrs['href']
-    links = getLinks(newLink)
+        newLink = links[random.randint(0, len(links) - 1)].attrs['href']
+        links = getLinks(newLink)
