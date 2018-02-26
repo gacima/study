@@ -15,7 +15,7 @@ print("~~" * 10)
 
 data1 = urlopen("http://www.pythonscraping.com/files/MontyPythonAlbums.csv").read().decode('utf-8', 'ignore')
 dataFile1 = StringIO(data1)
-csvDictReader = csv.DictReader(dataFile1
+csvDictReader = csv.DictReader(dataFile1)
 
 print(csvDictReader.fieldnames)
 for row in csvDictReader:
