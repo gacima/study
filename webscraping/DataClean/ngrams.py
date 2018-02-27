@@ -20,7 +20,7 @@ def cleanContent(content):
     return cleanInput
 
 
-def ngrams(content, n):/
+def ngrams(content, n):
     content = cleanContent(content)
     output = []
     for i in range(len(content) - n + 1):
