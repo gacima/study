@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-from collections import OrderedDict
-import re
-import string
+import re, string, operator
 
 
 def cleanContent(content):
@@ -21,18 +19,19 @@ def cleanContent(content):
     return cleanInput
 
 
-def ngrams(content, n):
-    content = cleanContent(content)
-    output = []
-    for i in range(len(content) - n + 1):
-        output.append(content[i:i+n])
+def ngrams(input, n):
+    content = cleanContent(input)
+    output = {}
+    for i in range(len(content)-n+1):
+        ngramTemp = " ".join(content[i:i+n])
+        if ngramTemp not in output:
+            output[ngramTemp] = 0
+        output[ngramTemp] += 1
     return output
 
 
-html = urlopen("https://en.wikipedia.org/wiki/Python_(programming_language)")
-bsObj = BeautifulSoup(html)
-content = bsObj.find("div", {'id': "mw-content-text"}).get_text()
+content = str(urlopen("http://www.pythonscraping.com/files/inaugurationSpeech.txt").read(), 'utf-8')
 ngrams = ngrams(content, 2)
-#ngrams = OrderedDict(sorted(, key=lambda n: n[1], reverse=True))
 print(ngrams)
-print("2-grams count is: " + str(len(ngrams)))
+sortedNGrams = sorted(ngrams.items(), key=operator.itemgetter(1), reverse=True)
+print(sortedNGrams)
