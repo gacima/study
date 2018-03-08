@@ -1,6 +1,6 @@
  
   
 
-This is some text, written in Arial, that will be reg
+This is some text, written in Arial, that will be re@
 Tesseract. Here are some symbols: I@#$%*&*(
 
