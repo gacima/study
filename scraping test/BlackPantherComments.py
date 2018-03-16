@@ -60,3 +60,5 @@ if __name__ == '__main__':
     comments = ''.join(comments)
 
 #getFilmInfo('https://movie.douban.com/cinema/nowplaying/chengdu/')
+def cleanData():
+    file = open('comments.txt')
