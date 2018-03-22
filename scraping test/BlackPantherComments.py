@@ -48,7 +48,7 @@ def getComments(filmId, num):
 
 
 def generateImage(file):
-    file = open('comments.txt', 'r', encoding='utf-8')
+    #file = open('comments.txt', 'r', encoding='utf-8')
     comments = file.read()
 
     pattern = re.compile(r'[\u4e00-\u9fa5]+')
@@ -81,7 +81,8 @@ def generateImage(file):
 
 if __name__ == '__main__':
     commentsList = []
-    filmId = getFilmInfo('https://movie.douban.com/cinema/nowplaying/chengdu/')['id']
+    filmInfo = getFilmInfo('https://movie.douban.com/cinema/nowplaying/chengdu/')
+    filmId = filmInfo['id']
     for i in range(10):
         num = i + 1
         comments_temp = getComments(filmId, num)
@@ -92,6 +93,7 @@ if __name__ == '__main__':
     pattern = re.compile(r'[\u4e00-\u9fa5]+')
     comments = re.findall(pattern, comments)
     comments = ''.join(comments)
-    file = open('comments.txt', 'w', encoding='utf-8')
+    fileName = filmInfo['name']
+    file = open(fileName+'.txt', 'w', encoding='utf-8')
     file.write(comments)
     generateImage(file)
