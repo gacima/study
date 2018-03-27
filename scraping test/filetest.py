@@ -5,7 +5,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
-file = open('comments.txt', 'r', encoding='utf-8')
+file = open('环太平洋：雷霆再起.txt', 'r', encoding='utf-8')
 comments = file.read()
 
 pattern = re.compile(r'[\u4e00-\u9fa5]+')

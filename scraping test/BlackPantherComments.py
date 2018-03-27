@@ -47,8 +47,8 @@ def getComments(filmId, num):
     return comments
 
 
-def generateImage(file):
-    #file = open('comments.txt', 'r', encoding='utf-8')
+def generateImage(fileName):
+    file = open(fileName+'.txt', 'r', encoding='utf-8')
     comments = file.read()
 
     pattern = re.compile(r'[\u4e00-\u9fa5]+')
@@ -76,7 +76,7 @@ def generateImage(file):
 
     wordcloud = wordcloud.fit_words(dict(word_frequence_list))
     plt.imshow(wordcloud)
-    plt.savefig('comments.jpg')
+    plt.savefig(fileName+'.jpg')
 
 
 if __name__ == '__main__':
@@ -96,4 +96,4 @@ if __name__ == '__main__':
     fileName = filmInfo['name']
     file = open(fileName+'.txt', 'w', encoding='utf-8')
     file.write(comments)
-    generateImage(file)
+    generateImage(fileName)
